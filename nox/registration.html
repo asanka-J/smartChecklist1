@@ -1,0 +1,97 @@
+
+
+
+<div class="pages navbar-fixed toolbar-fixed">
+    <div data-page="login" class="page">
+
+        <div class="page-content">
+
+      
+            <div class="login-view-box mt-50">
+ <?php
+						@session_start();
+						if(isset($_POST['btnreg'])){
+						
+						
+						$name=$_POST['txtname'];
+						$email=$_POST['txtemail'];
+						$username=$_POST['txtuname'];
+						$tel=$_POST['txttel'];
+						$password=$_POST['txtpassword'];
+						
+						
+						
+						$con=mysqli_connect("localhost","root","","group1");
+						
+						
+						
+						$sql="insert into users
+						(name,email,uname,tel,pword)
+						values('$name','$email','$username','$tel','$password')";
+						
+						//$_SESSION['cat']=$uname;
+						
+						if (!mysqli_query($con,$sql)) {
+							die('Error: ' . mysqli_error($con));
+						}
+
+						
+						
+					header('Location:login.html');
+						
+						}
+						
+						?>
+                <div class="list login-form-box">
+                    <form action="register.php" method="POST"   class="form nice-label">
+
+                        <div class="form-row">
+                            <label for="login"><span class="icon-mustache"></span></label>
+                            <input type="text" name="txtname" id="login" placeholder="Name" required>
+                        </div>
+						 <div class="form-row">
+                            <label for="email"><span class="icon-bubble-emoticon"></span></label>
+                            <input type="email" name="txtemail" id="login" placeholder="Email" required>
+                        </div>
+						 <div class="form-row">
+                            <label for="login"><span class="icon-user"></span></label>
+                            <input type="text" name="txtuname" id="login" placeholder="User Name" required>
+                        </div>
+						<div class="form-row">
+                            <label for="login"><span class="icon-phone-incoming"></span></label>
+                            <input type="number" name="txttel" id="login" placeholder="Tel" required>
+                        </div>
+                      
+                        <div class="form-row">
+                            <label for="password"><span class="icon-lock"></span></label>
+                            <input type="password" name="txtpassword" id="password" placeholder="Password" required>
+                        </div>
+						
+						 <div class="form-row">
+                            <label for="password"><span class="icon-tag"></span></label>
+                            
+							<select name="txttype" style="background:none;border:none; -webkit-appearance:none;font-size:15px;color:white;width="200px"">
+							<option style="color:black">Select Type</option>
+							<option style="color:black">Seller</option>
+							<option style="color:black">Buyer
+							</option>
+							
+							</select>
+                        </div>
+       
+                     
+                      
+
+                     <input type="submit" value="Sign Up" name="btnreg" class="button button-primary button-fill"/>
+
+
+                    </form>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
